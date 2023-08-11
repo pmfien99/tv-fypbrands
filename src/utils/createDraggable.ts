@@ -4,7 +4,7 @@ import { InertiaPlugin } from 'gsap/InertiaPlugin';
 
 /**
  * Create dragable elements on the screen
- * @param name class name to be used for dragable elements.
+ * @param className class name to be used for dragable elements.
  */
 export const createDraggable = (className: string) => {
   gsap.registerPlugin(Draggable);
@@ -16,5 +16,5 @@ export const createDraggable = (className: string) => {
     bounds: window,
     inertia: true,
   });
-  console.log(`Creating Dragable Elements!`);
+  console.log(`Creating Dragable Elements => Class Name: ${className}`);
 };
