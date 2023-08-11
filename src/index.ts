@@ -1,10 +1,8 @@
 import { gsap } from 'gsap';
-import { InertiaPlugin } from 'gsap/InertiaPlugin';
 import { Physics2DPlugin } from 'gsap/Physics2DPlugin';
 
 import { createDraggable } from '$utils/createDraggable';
 
-gsap.registerPlugin(InertiaPlugin);
 gsap.registerPlugin(Physics2DPlugin);
 
 window.Webflow ||= [];

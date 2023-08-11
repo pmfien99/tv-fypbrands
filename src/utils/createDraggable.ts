@@ -1,5 +1,6 @@
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/all';
+import { InertiaPlugin } from 'gsap/InertiaPlugin';
 
 /**
  * Create dragable elements on the screen
@@ -7,6 +8,7 @@ import { Draggable } from 'gsap/all';
  */
 export const createDraggable = (className: string) => {
   gsap.registerPlugin(Draggable);
+  gsap.registerPlugin(InertiaPlugin);
 
   Draggable.create(className, {
     cursor: 'src/assets/cursor-mouse-hover.svg',
