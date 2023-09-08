@@ -9,5 +9,5 @@ window.Webflow.push(() => {
   createDraggable('.draggable');
 
   // Create Animation that happens on navigation open
-  createMenuAnimation('nav-menu-open');
+  createMenuAnimation();
 });
