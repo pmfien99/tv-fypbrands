@@ -162,6 +162,7 @@ export const createMenuAnim = () => {
 
     isDirty = false;
   }
+
   document.addEventListener('DOMContentLoaded', () => {
     createIcons();
     Matter.Events.on(engine, 'collisionStart', function (event) {
