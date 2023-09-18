@@ -1,6 +1,9 @@
+import { gsap } from 'gsap';
+import { MorphSVGPlugin } from 'gsap/all';
 import * as Matter from 'matter-js';
 
 export const createMenuAnim = () => {
+  gsap.registerPlugin(MorphSVGPlugin);
   const icons = [
     {
       link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/64fb9ee6dbe2e5914780fe60_placeholder-menu-open-3.svg',
@@ -191,6 +194,22 @@ export const createMenuAnim = () => {
   if (navToggle != null) {
     navToggle.addEventListener('click', function () {
       startAnimation();
+      morphNav();
+    });
+  }
+
+  // Set up animation for on navigation click
+  function morphNav() {
+    const shape1 = document.getElementById('nav-icon-closed');
+    const shape2 = document.getElementById('nav-icon-open');
+
+    console.log(shape1);
+    console.log(shape2);
+
+    console.log('transforming');
+    gsap.to(shape1, {
+      morphSVG: { shape: shape2 },
+      duration: 1,
     });
   }
 };
