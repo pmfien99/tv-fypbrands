@@ -3,9 +3,64 @@ import * as Matter from 'matter-js';
 export const createMenuAnim = () => {
   const icons = [
     {
-      link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/64fb571c232682e302ae2788_coconut-cocktail-svgrepo-com.svg',
-      width: 192,
-      height: 140,
+      link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/64fb9ee6dbe2e5914780fe60_placeholder-menu-open-3.svg',
+      width: 143,
+      height: 203,
+    },
+    {
+      link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/64fb9ee61eecdd4629b6262e_placeholder-menu-open-2.svg',
+      width: 121,
+      height: 185,
+    },
+    {
+      link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/64fb9ebf8bd363e1b787dc9f_placeholder-menu-open-1.svg',
+      width: 167,
+      height: 174,
+    },
+    {
+      link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/65085f399ff9c6390c0a8671_navIcons%20-%20guitar.svg',
+      width: 305,
+      height: 608,
+    },
+    {
+      link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/64fb9ee6dbe2e5914780fe60_placeholder-menu-open-3.svg',
+      width: 143,
+      height: 203,
+    },
+    {
+      link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/64fb9ee61eecdd4629b6262e_placeholder-menu-open-2.svg',
+      width: 121,
+      height: 185,
+    },
+    {
+      link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/64fb9ebf8bd363e1b787dc9f_placeholder-menu-open-1.svg',
+      width: 167,
+      height: 174,
+    },
+    {
+      link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/65085f399ff9c6390c0a8671_navIcons%20-%20guitar.svg',
+      width: 305,
+      height: 608,
+    },
+    {
+      link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/64fb9ee6dbe2e5914780fe60_placeholder-menu-open-3.svg',
+      width: 143,
+      height: 203,
+    },
+    {
+      link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/64fb9ee61eecdd4629b6262e_placeholder-menu-open-2.svg',
+      width: 121,
+      height: 185,
+    },
+    {
+      link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/64fb9ebf8bd363e1b787dc9f_placeholder-menu-open-1.svg',
+      width: 167,
+      height: 174,
+    },
+    {
+      link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/65085f399ff9c6390c0a8671_navIcons%20-%20guitar.svg',
+      width: 305,
+      height: 608,
     },
   ];
 
@@ -43,7 +98,7 @@ export const createMenuAnim = () => {
       const y = randomInteger(window.innerHeight / 2 - 400, window.innerHeight / 2 + 400);
 
       const icon = icons[i];
-      const scale = randomDecimalInteger(0.4, 0.8);
+      const scale = randomDecimalInteger(0.4, 0.65);
       const width = icon.width * scale;
       const height = icon.height * scale;
       const iconBody = Bodies.rectangle(x, y, width, height, {
@@ -87,6 +142,7 @@ export const createMenuAnim = () => {
 
   let isDirty = false;
   async function startAnimation() {
+    console.log('animating');
     if (isDirty) return;
     isDirty = true;
     await new Promise((resolve) => {
@@ -129,7 +185,8 @@ export const createMenuAnim = () => {
     });
   });
 
-  const navToggle = document.getElementById(menuID);
+  const navToggle = document.getElementById('tvNavToggle');
+
   if (navToggle != null) {
     navToggle.addEventListener('click', function () {
       startAnimation();
