@@ -1,7 +1,8 @@
 import { gsap } from 'gsap';
 
 import { createDraggable } from '$utils/createDraggable';
-import { createMenuAnimation } from '$utils/createMenuAnimation';
+import { createLEDInteraction } from '$utils/createLEDBarInteraction';
+import { createMenuAnim } from '$utils/createMenuAnim';
 
 window.Webflow ||= [];
 window.Webflow.push(() => {
@@ -9,5 +10,8 @@ window.Webflow.push(() => {
   createDraggable('.draggable');
 
   // Create Animation that happens on navigation open
-  createMenuAnimation();
+  createMenuAnim();
+
+  // Create LED interactions
+  createLEDInteraction();
 });

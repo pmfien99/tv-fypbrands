@@ -53,7 +53,8 @@
   },
   "dependencies": {
     "@finsweet/ts-utils": "^0.39.2",
-    "gsap": "npm:@gsap/shockingly@^3.12.2"
+    "gsap": "npm:@gsap/shockingly@^3.12.2",
+    "matter-js": "^0.19.0"
   },
   "engines": {
     "pnpm": ">=8"
