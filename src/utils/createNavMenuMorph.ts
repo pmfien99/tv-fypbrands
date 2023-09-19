@@ -4,11 +4,8 @@ export const createNavMenuMorph = () => {
   const navBtn = document.getElementById('tvNavToggle');
 
   if (navBtn !== null) {
-    console.log('nav animatio');
     const shapeClosed = document.getElementById('nav-icon-closed') as gsap.SVGPathValue | null;
     const shapeOpen = document.getElementById('nav-icon-open') as gsap.SVGPathValue | null;
-    console.log(shapeClosed);
-    console.log(shapeOpen);
 
     let isOpen = false;
     navBtn.addEventListener('click', () => {

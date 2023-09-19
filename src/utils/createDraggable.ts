@@ -15,5 +15,4 @@ export const createDraggable = (className: string) => {
     activeCursor: '.src/assets/cursor-mouse-hover.svg',
     inertia: true,
   });
-  console.log(`Creating Dragable Elements => Class Name: ${className}`);
 };

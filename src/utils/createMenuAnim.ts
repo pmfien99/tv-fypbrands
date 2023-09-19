@@ -105,7 +105,7 @@ export const createMenuAnim = () => {
 
       const icon = icons[i];
       const isMobile = window.innerWidth < 600;
-      const scale = randomDecimalInteger(isMobile ? 0.2 : 0.3, isMobile ? 0.3 : 0.5);
+      const scale = randomDecimalInteger(isMobile ? 0.2 : 0.4, isMobile ? 0.3 : 0.6);
       const width = icon.width * scale;
       const height = icon.height * scale;
 
@@ -134,7 +134,7 @@ export const createMenuAnim = () => {
   Runner.run(runner, engine);
   Render.run(render);
 
-  function fireIcon(i) {
+  function fireIcon(i: number) {
     const iconBody = iconsBodies[i];
     if (iconBody.running) return;
     iconBody.running = true;
@@ -147,19 +147,25 @@ export const createMenuAnim = () => {
     Body.setVelocity(iconBody, velocity);
   }
   let isDirty = false;
+  let isOpen = false;
   function startAnimation() {
-    if (isDirty) return;
-    isDirty = true;
+    if (isOpen === false) {
+      if (isDirty) return;
+      isDirty = true;
 
-    for (let i = 0; i < iconsBodies.length; i++) {
-      setTimeout(() => {
-        fireIcon(i);
-      }, i * 20);
+      for (let i = 0; i < iconsBodies.length; i++) {
+        setTimeout(() => {
+          fireIcon(i);
+        }, i * 20);
+      }
+
+      createIcons();
+
+      isDirty = false;
+      isOpen = true;
+    } else {
+      isOpen = false;
     }
-
-    createIcons();
-
-    isDirty = false;
   }
 
   createIcons();
@@ -211,23 +217,7 @@ export const createMenuAnim = () => {
 
   if (navToggle != null) {
     navToggle.addEventListener('click', function () {
-      morphNav();
       startAnimation();
-    });
-  }
-
-  // Set up animation for on navigation click
-  function morphNav() {
-    const shape1 = document.getElementById('nav-icon-closed');
-    const shape2 = document.getElementById('nav-icon-open');
-
-    console.log(shape1);
-    console.log(shape2);
-
-    console.log('transforming');
-    gsap.to(shape1, {
-      morphSVG: { shape: shape2 },
-      duration: 1,
     });
   }
 };
