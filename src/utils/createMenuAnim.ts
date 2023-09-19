@@ -7,63 +7,63 @@ export const createMenuAnim = () => {
   const icons = [
     {
       link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/64fb9ee6dbe2e5914780fe60_placeholder-menu-open-3.svg',
-      width: 143,
-      height: 203,
+      width: 193,
+      height: 235,
     },
     {
       link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/64fb9ee61eecdd4629b6262e_placeholder-menu-open-2.svg',
-      width: 121,
-      height: 185,
+      width: 143,
+      height: 207,
     },
     {
       link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/64fb9ebf8bd363e1b787dc9f_placeholder-menu-open-1.svg',
-      width: 167,
-      height: 174,
+      width: 219,
+      height: 226,
     },
     {
       link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/65085f399ff9c6390c0a8671_navIcons%20-%20guitar.svg',
-      width: 305,
-      height: 608,
+      width: 332,
+      height: 577,
     },
     {
       link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/64fb9ee6dbe2e5914780fe60_placeholder-menu-open-3.svg',
-      width: 143,
-      height: 203,
+      width: 193,
+      height: 235,
     },
     {
       link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/64fb9ee61eecdd4629b6262e_placeholder-menu-open-2.svg',
-      width: 121,
-      height: 185,
+      width: 143,
+      height: 207,
     },
     {
       link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/64fb9ebf8bd363e1b787dc9f_placeholder-menu-open-1.svg',
-      width: 167,
-      height: 174,
+      width: 219,
+      height: 226,
     },
     {
       link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/65085f399ff9c6390c0a8671_navIcons%20-%20guitar.svg',
-      width: 305,
-      height: 608,
+      width: 332,
+      height: 577,
     },
     {
       link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/64fb9ee6dbe2e5914780fe60_placeholder-menu-open-3.svg',
-      width: 143,
-      height: 203,
+      width: 193,
+      height: 235,
     },
     {
       link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/64fb9ee61eecdd4629b6262e_placeholder-menu-open-2.svg',
-      width: 121,
-      height: 185,
+      width: 143,
+      height: 207,
     },
     {
       link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/64fb9ebf8bd363e1b787dc9f_placeholder-menu-open-1.svg',
-      width: 167,
-      height: 174,
+      width: 219,
+      height: 226,
     },
     {
       link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/65085f399ff9c6390c0a8671_navIcons%20-%20guitar.svg',
-      width: 305,
-      height: 608,
+      width: 332,
+      height: 577,
     },
   ];
 
@@ -83,13 +83,16 @@ export const createMenuAnim = () => {
     { Body } = Matter;
 
   const engine = Engine.create();
+  const animationBody: HTMLElement = document.getElementById('animation-canvas');
+
   const render = Render.create({
-    element: document.body,
+    element: animationBody,
     engine: engine,
     options: {
-      width: window.innerWidth,
-      height: window.innerHeight,
+      width: animationBody.clientWidth,
+      height: animationBody.clientHeight,
       wireframes: false,
+      background: 'transparent',
     },
   });
 
@@ -101,16 +104,17 @@ export const createMenuAnim = () => {
       const y = randomInteger(window.innerHeight / 2 - 400, window.innerHeight / 2 + 400);
 
       const icon = icons[i];
-      const scale = randomDecimalInteger(0.4, 0.65);
+      const isMobile = window.innerWidth < 600;
+      const scale = randomDecimalInteger(isMobile ? 0.2 : 0.3, isMobile ? 0.3 : 0.5);
       const width = icon.width * scale;
       const height = icon.height * scale;
-      const iconBody = Bodies.rectangle(x, y, width, height, {
+
+      const iconBody: Matter.Body = Bodies.rectangle(x, y, width, height, {
         friction: 0.8,
         airFriction: 0.1,
         restitution: 0.3,
         isStatic: true,
         render: {
-          fillStyle: 'red',
           sprite: {
             texture: icon.link,
             xScale: scale,
@@ -142,59 +146,73 @@ export const createMenuAnim = () => {
     };
     Body.setVelocity(iconBody, velocity);
   }
-
   let isDirty = false;
-  async function startAnimation() {
-    console.log('animating');
+  function startAnimation() {
     if (isDirty) return;
     isDirty = true;
-    await new Promise((resolve) => {
-      // if (iconsBodies.length !== 0) {
-      //   iconsBodies = [];
-      // }
 
-      for (let i = 0; i < iconsBodies.length; i++) {
-        setTimeout(() => {
-          fireIcon(i);
-        }, i * 20);
-      }
+    for (let i = 0; i < iconsBodies.length; i++) {
+      setTimeout(() => {
+        fireIcon(i);
+      }, i * 20);
+    }
 
-      resolve(true);
-    });
     createIcons();
 
     isDirty = false;
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    createIcons();
-    Matter.Events.on(engine, 'collisionStart', function (event) {
-      const { pairs } = event;
-      console.log(pairs, 'pairs');
-    });
-    Matter.Events.on(engine, 'beforeUpdate', function (event) {
-      for (let i = 0; i < iconsBodies.length; i++) {
-        const iconBody = iconsBodies[i];
-        if (iconBody.position.x <= 0) {
-          Body.setVelocity(iconBody, { x: 25, y: 5 });
-        }
-        if (iconBody.position.y <= 0) {
-          Body.setVelocity(iconBody, { x: -30, y: 5 });
-        }
+  createIcons();
 
-        if (iconBody.position.y >= window.innerHeight) {
-          iconsBodies.splice(i, 1);
-        }
+  Matter.Events.on(engine, 'beforeUpdate', function () {
+    for (let i = 0; i < iconsBodies.length; i++) {
+      const iconBody = iconsBodies[i];
+
+      if (iconBody.position.x <= iconBody.tempWidth / 2 + 10) {
+        Body.setVelocity(iconBody, { x: 25, y: 5 });
       }
-    });
+      if (iconBody.position.y <= iconBody.tempHeight / 2 + 10) {
+        Body.setVelocity(iconBody, { x: -30, y: 5 });
+      }
+
+      if (iconBody.position.y >= window.innerHeight) {
+        iconsBodies.splice(i, 1);
+      }
+    }
   });
+
+  function recreateIcons() {
+    // Remove existing icons from the world
+    World.clear(engine.world, false);
+    iconsBodies.length = 0; // Clear the iconsBodies array
+
+    // Create new icons with updated positions
+    createIcons();
+  }
+
+  // Listen for the window resize event
+  window.addEventListener('resize', function () {
+    // Update the dimensions of the render object
+    render.options.width = animationBody.clientWidth;
+    render.options.height = animationBody.clientHeight;
+
+    // Update the canvas size
+    render.canvas.width = render.options.width;
+    render.canvas.height = render.options.height;
+
+    // Recreate icons with updated positions
+    recreateIcons();
+  });
+
+  // Call recreateIcons initially to create icons on page load
+  recreateIcons();
 
   const navToggle = document.getElementById('tvNavToggle');
 
   if (navToggle != null) {
     navToggle.addEventListener('click', function () {
-      startAnimation();
       morphNav();
+      startAnimation();
     });
   }
 
