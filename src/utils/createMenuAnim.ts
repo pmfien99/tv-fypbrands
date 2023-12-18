@@ -6,62 +6,42 @@ export const createMenuAnim = () => {
   gsap.registerPlugin(MorphSVGPlugin);
   const icons = [
     {
-      link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/64fb9ee6dbe2e5914780fe60_placeholder-menu-open-3.svg',
+      link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/6580968dfb6ef128287a98dc_Paint%20Bucket.webp',
       width: 193,
       height: 235,
     },
     {
-      link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/64fb9ee61eecdd4629b6262e_placeholder-menu-open-2.svg',
+      link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/6580968dfb6ef128287a98dc_Paint%20Bucket.webp',
       width: 143,
       height: 207,
     },
     {
-      link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/64fb9ebf8bd363e1b787dc9f_placeholder-menu-open-1.svg',
+      link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/6580968c4490ea590b88e423_Razor%20Blade.webp',
       width: 219,
       height: 226,
     },
     {
-      link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/65085f399ff9c6390c0a8671_navIcons%20-%20guitar.svg',
+      link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/6580968c4490ea590b88e423_Razor%20Blade.webp',
       width: 332,
       height: 577,
     },
     {
-      link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/64fb9ee6dbe2e5914780fe60_placeholder-menu-open-3.svg',
+      link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/6580968c8b3f9a64c72d287f_Pencil.webp',
       width: 193,
       height: 235,
     },
     {
-      link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/64fb9ee61eecdd4629b6262e_placeholder-menu-open-2.svg',
+      link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/6580968c8b3f9a64c72d287f_Pencil.webp',
       width: 143,
       height: 207,
     },
     {
-      link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/64fb9ebf8bd363e1b787dc9f_placeholder-menu-open-1.svg',
+      link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/6580968c6e0bbbbcd5d6c0ce_Nail.webp',
       width: 219,
       height: 226,
     },
     {
-      link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/65085f399ff9c6390c0a8671_navIcons%20-%20guitar.svg',
-      width: 332,
-      height: 577,
-    },
-    {
-      link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/64fb9ee6dbe2e5914780fe60_placeholder-menu-open-3.svg',
-      width: 193,
-      height: 235,
-    },
-    {
-      link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/64fb9ee61eecdd4629b6262e_placeholder-menu-open-2.svg',
-      width: 143,
-      height: 207,
-    },
-    {
-      link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/64fb9ebf8bd363e1b787dc9f_placeholder-menu-open-1.svg',
-      width: 219,
-      height: 226,
-    },
-    {
-      link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/65085f399ff9c6390c0a8671_navIcons%20-%20guitar.svg',
+      link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/6580968c6e0bbbbcd5d6c0ce_Nail.webp',
       width: 332,
       height: 577,
     },
