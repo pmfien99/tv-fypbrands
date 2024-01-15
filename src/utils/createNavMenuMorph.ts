@@ -13,7 +13,6 @@ export const createNavMenuMorph = () => {
     if (navBackground !== null) {
       if (shapeClosed !== null && shapeOpen !== null) {
         navBackground.addEventListener('click', () => {
-          console.log('clicking the bg');
           navBtn.click();
         });
       }

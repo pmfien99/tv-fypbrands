@@ -42,6 +42,17 @@ export const createMenuAnim = () => {
     },
   ];
 
+  const resolutionSettings = [
+    { maxWidth: 600, xOffset: 200 },
+    { maxWidth: 1200, xOffset: 300 },
+    { maxWidth: Infinity, xOffset: 400 },
+  ];
+
+  function getSettings() {
+    const screenWidth = window.innerWidth;
+    return resolutionSettings.find((setting) => screenWidth <= setting.maxWidth);
+  }
+
   function randomInteger(min: number, max: number) {
     return Math.random() * (max - min + 1) + min;
   }
@@ -75,12 +86,14 @@ export const createMenuAnim = () => {
 
   function createIcons() {
     for (let i = 0; i < icons.length; i++) {
-      const x = window.innerWidth + 100;
+      //
+      const settings = getSettings();
+      const x = window.innerWidth + settings.xOffset;
       const y = randomInteger(window.innerHeight / 2 - 400, window.innerHeight / 2 + 400);
 
       const icon = icons[i];
       const isMobile = window.innerWidth < 600;
-      const scale = randomDecimalInteger(isMobile ? 0.2 : 0.4, isMobile ? 0.3 : 0.5);
+      const scale = randomDecimalInteger(isMobile ? 0.3 : 0.5, isMobile ? 0.8 : 0.9);
       const width = icon.width * scale;
       const height = icon.height * scale;
 
@@ -117,7 +130,7 @@ export const createMenuAnim = () => {
 
     const velocity = {
       x: randomInteger(30, 50) * -1,
-      y: randomInteger(5, 20) * -1,
+      y: randomInteger(20, 20) * -1,
     };
     Body.setVelocity(iconBody, velocity);
   }

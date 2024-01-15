@@ -12863,6 +12863,8 @@
     gsapWithCSS.registerPlugin(Draggable);
     gsapWithCSS.registerPlugin(InertiaPlugin2);
     Draggable.create(className, {
+      bounds: document.getElementById("global-page-wrapper"),
+      edgeResistance: 1,
       cursor: "src/assets/cursor-mouse-hover.svg",
       activeCursor: ".src/assets/cursor-mouse-hover.svg",
       inertia: true
@@ -12911,6 +12913,15 @@
         height: 193
       }
     ];
+    const resolutionSettings = [
+      { maxWidth: 600, xOffset: 200 },
+      { maxWidth: 1200, xOffset: 300 },
+      { maxWidth: Infinity, xOffset: 400 }
+    ];
+    function getSettings() {
+      const screenWidth = window.innerWidth;
+      return resolutionSettings.find((setting) => screenWidth <= setting.maxWidth);
+    }
     function randomInteger(min, max) {
       return Math.random() * (max - min + 1) + min;
     }
@@ -12933,11 +12944,12 @@
     const iconsBodies = [];
     function createIcons() {
       for (let i = 0; i < icons.length; i++) {
-        const x = window.innerWidth + 100;
+        const settings = getSettings();
+        const x = window.innerWidth + settings.xOffset;
         const y = randomInteger(window.innerHeight / 2 - 400, window.innerHeight / 2 + 400);
         const icon = icons[i];
         const isMobile = window.innerWidth < 600;
-        const scale = randomDecimalInteger(isMobile ? 0.2 : 0.4, isMobile ? 0.3 : 0.5);
+        const scale = randomDecimalInteger(isMobile ? 0.3 : 0.5, isMobile ? 0.8 : 0.9);
         const width = icon.width * scale;
         const height = icon.height * scale;
         const iconBody = Bodies.rectangle(x, y, width, height, {
@@ -12972,7 +12984,7 @@
       Body.set(iconBody, "isStatic", false);
       const velocity = {
         x: randomInteger(30, 50) * -1,
-        y: randomInteger(5, 20) * -1
+        y: randomInteger(20, 20) * -1
       };
       Body.setVelocity(iconBody, velocity);
     }
@@ -13043,7 +13055,6 @@
       if (navBackground !== null) {
         if (shapeClosed !== null && shapeOpen !== null) {
           navBackground.addEventListener("click", () => {
-            console.log("clicking the bg");
             navBtn.click();
           });
         }

@@ -11,6 +11,8 @@ export const createDraggable = (className: string) => {
   gsap.registerPlugin(InertiaPlugin);
 
   Draggable.create(className, {
+    bounds: document.getElementById('global-page-wrapper'),
+    edgeResistance: 1,
     cursor: 'src/assets/cursor-mouse-hover.svg',
     activeCursor: '.src/assets/cursor-mouse-hover.svg',
     inertia: true,
