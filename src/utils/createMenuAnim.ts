@@ -12,33 +12,28 @@ export const createMenuAnim = () => {
     },
     {
       link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/659da9791046197588e22435_Drawing%20Saw.svg',
-      width: 127,
+      width: 193,
       height: 256,
     },
     {
       link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/6580968c4490ea590b88e423_Razor%20Blade.webp',
-      width: 180,
-      height: 170,
-    },
-    {
-      link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/6580968c4490ea590b88e423_Razor%20Blade.webp',
-      width: 180,
-      height: 170,
+      width: 193,
+      height: 256,
     },
     {
       link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/6566b3a7285148f4dbbd04fa_Drawings_Nail.svg',
-      width: 152,
-      height: 205,
+      width: 193,
+      height: 256,
     },
     {
       link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/659da9782fe90937705435e8_Drawing%20Pencil.svg',
-      width: 150,
-      height: 150,
+      width: 193,
+      height: 256,
     },
     {
       link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/659da97917c726a7da326452_Drawing%20Hammer.svg',
-      width: 109,
-      height: 193,
+      width: 193,
+      height: 256,
     },
   ];
 
@@ -58,7 +53,7 @@ export const createMenuAnim = () => {
   }
 
   function randomDecimalInteger(min: number, max: number) {
-    return Math.random() * (max - min + 0.1) + min;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
   const { Engine } = Matter,
@@ -93,7 +88,7 @@ export const createMenuAnim = () => {
 
       const icon = icons[i];
       const isMobile = window.innerWidth < 600;
-      const scale = randomDecimalInteger(isMobile ? 0.3 : 0.5, isMobile ? 0.8 : 0.9);
+      const scale = randomDecimalInteger(isMobile ? 0.2 : 0.3, isMobile ? 0.8 : 1);
       const width = icon.width * scale;
       const height = icon.height * scale;
 
@@ -105,8 +100,8 @@ export const createMenuAnim = () => {
         render: {
           sprite: {
             texture: icon.link,
-            xScale: scale,
-            yScale: scale,
+            xScale: 1,
+            yScale: 1,
           },
         },
       });
