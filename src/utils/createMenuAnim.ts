@@ -100,8 +100,8 @@ export const createMenuAnim = () => {
         render: {
           sprite: {
             texture: icon.link,
-            xScale: 1,
-            yScale: 1,
+            xScale: scale,
+            yScale: scale,
           },
         },
       });
