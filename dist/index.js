@@ -12921,7 +12921,7 @@
       return Math.random() * (max - min + 1) + min;
     }
     function randomDecimalInteger(min, max) {
-      return Math.floor(Math.random() * (max - min + 1)) + min;
+      return Math.random() * (max - min) + min;
     }
     const { Engine } = Matter, { Render } = Matter, { World } = Matter, { Bodies } = Matter, { Runner } = Matter, { Body } = Matter;
     const engine = Engine.create();
@@ -12944,9 +12944,11 @@
         const y = randomInteger(window.innerHeight / 2 - 400, window.innerHeight / 2 + 400);
         const icon = icons[i];
         const isMobile = window.innerWidth < 600;
-        const scale = randomDecimalInteger(isMobile ? 0.2 : 0.3, isMobile ? 0.8 : 1);
+        const scale = randomDecimalInteger(isMobile ? 0.3 : 0.8, isMobile ? 0.4 : 1);
+        console.log(isMobile);
         const width = icon.width * scale;
         const height = icon.height * scale;
+        console.log(scale);
         const iconBody = Bodies.rectangle(x, y, width, height, {
           friction: 0.8,
           airFriction: 0.1,
