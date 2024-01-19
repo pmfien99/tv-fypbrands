@@ -7,33 +7,33 @@ export const createMenuAnim = () => {
   const icons = [
     {
       link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/6580968dfb6ef128287a98dc_Paint%20Bucket.webp',
-      width: 193,
-      height: 235,
+      width: 219,
+      height: 233,
     },
     {
       link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/659da9791046197588e22435_Drawing%20Saw.svg',
-      width: 193,
-      height: 256,
+      width: 187,
+      height: 284,
     },
     {
       link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/6580968c4490ea590b88e423_Razor%20Blade.webp',
-      width: 193,
-      height: 256,
+      width: 378,
+      height: 357,
     },
     {
       link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/6566b3a7285148f4dbbd04fa_Drawings_Nail.svg',
-      width: 193,
-      height: 256,
+      width: 152,
+      height: 205,
     },
     {
       link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/659da9782fe90937705435e8_Drawing%20Pencil.svg',
-      width: 193,
-      height: 256,
+      width: 219,
+      height: 219,
     },
     {
       link: 'https://uploads-ssl.webflow.com/64d51aeb05adb0e3c91005ab/659da97917c726a7da326452_Drawing%20Hammer.svg',
-      width: 193,
-      height: 256,
+      width: 184,
+      height: 226,
     },
   ];
 
@@ -89,10 +89,8 @@ export const createMenuAnim = () => {
       const icon = icons[i];
       const isMobile = window.innerWidth < 600;
       const scale = randomDecimalInteger(isMobile ? 0.3 : 0.8, isMobile ? 0.4 : 1);
-      console.log(isMobile);
       const width = icon.width * scale;
       const height = icon.height * scale;
-      console.log(scale);
       const iconBody: Matter.Body = Bodies.rectangle(x, y, width, height, {
         friction: 0.8,
         airFriction: 0.1,
